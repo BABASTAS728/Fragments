@@ -5,16 +5,22 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 
 class ColorFragment : Fragment() {
     companion object {
-        private val COLOR = "Color"
-
+        private const val PURPLE = "Фиолетовый"
+        private const val PINK = "Розовый"
+        private const val BLACK = "Чёрный"
+        private const val BLUE = "Синий"
+        private const val AQUA = "Бирюзовый"
+        private const val GREEN = "Тёмно-зелёный"
+        private const val COLOR_KEY = "Color"
         fun newInstance(color: String): ColorFragment {
             val fragment = ColorFragment()
             val args: Bundle = Bundle()
-            args.putString(COLOR, color)
+            args.putString(COLOR_KEY, color)
             fragment.arguments = args
             return fragment
         }
@@ -29,18 +35,16 @@ class ColorFragment : Fragment() {
         return view
     }
 
-    @SuppressLint("UseCompatLoadingForDrawables")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val frame = view.findViewById<View>(R.id.view)
-        val color = when (arguments?.getString(COLOR)) {
-            "Фиолетовый" -> resources.getDrawable(R.color.purple_500)
-            "Розовый" -> resources.getDrawable(R.color.purple_200)
-            "Чёрный" -> resources.getDrawable(R.color.black)
-            "Синий" -> resources.getDrawable(R.color.purple_700)
-            "Бирюзовый" -> resources.getDrawable(R.color.teal_200)
-            "Тёмно-зелёный" -> resources.getDrawable(R.color.teal_700)
-            else -> resources.getDrawable(R.color.white)
+        val color = when (arguments?.getString(COLOR_KEY)) {
+            PURPLE -> ContextCompat.getColor(requireContext(),R.color.purple_500)
+            PINK -> ContextCompat.getColor(requireContext(),R.color.purple_200)
+            BLACK -> ContextCompat.getColor(requireContext(),R.color.black)
+            BLUE -> ContextCompat.getColor(requireContext(),R.color.purple_700)
+            AQUA -> ContextCompat.getColor(requireContext(),R.color.teal_200)
+            GREEN -> ContextCompat.getColor(requireContext(),R.color.teal_700)
+            else -> ContextCompat.getColor(requireContext(),R.color.white)
         }
-        frame.background = color
+        view.setBackgroundColor(color)
     }
 }

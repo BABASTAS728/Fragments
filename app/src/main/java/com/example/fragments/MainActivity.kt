@@ -22,10 +22,10 @@ class MainActivity : AppCompatActivity() {
 
         val button = findViewById<Button>(R.id.button)
         button.setOnClickListener {
-            val messageFragment = ColorFragment.newInstance(spinner.selectedItem.toString())
+            val colorFragment = ColorFragment.newInstance(spinner.selectedItem.toString())
             supportFragmentManager
                 .beginTransaction()
-                .add(R.id.frame_layout, messageFragment)
+                .add(R.id.frame_layout, colorFragment)
                 .addToBackStack("fragment")
                 .commit()
         }
