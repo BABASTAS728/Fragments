@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Fragments</string>
+    <string name="change_color">Change Color</string>
+    <string-array name="Colors">
+        <item>Фиолетовый</item>
+        <item>Розовый</item>
+        <item>Чёрный</item>
+        <item>Синий</item>
+        <item>Бирюзовый</item>
+        <item>Тёмно-зелёный</item>
+    </string-array>
 </resources>
